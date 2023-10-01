@@ -9,7 +9,7 @@ export default function MovieItem (props) {
     }
 
     return (
-        <div>
+        <div key={props.id}>
             <h3>{props.title}</h3>
             <img src={props.poster} alt={props.title} onClick={imageClicked}/>
         </div>
