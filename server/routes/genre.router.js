@@ -6,7 +6,7 @@ const { default: axios } = require('axios');
 router.get('/:id', (req, res) => {
   let id=req.params['id']
 
-  const query = `SELECT "movies"."id","title", JSON_AGG(name) as "movie_genres"
+  const query = `SELECT "movies"."id","title", JSON_AGG(name) as "genres", "description", "poster"
   FROM "movies_genres"
   JOIN "genres" ON "genres"."id"="movies_genres"."genre_id"
   JOIN "movies" ON "movies"."id"="movies_genres"."movie_id"
