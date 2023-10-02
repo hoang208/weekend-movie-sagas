@@ -40,7 +40,7 @@ export default function Header() {
               Home
             </Button>
             <Button onClick={handleMovieList} color="inherit">
-              Movie List
+              Movie Collection
             </Button>
             <Button onClick={handleAdd} color="inherit">
               Add a Movie
