@@ -9,6 +9,7 @@ import Success from "../MovieForm/FormSuccess";
 import Edit from "../Details/Edit";
 import FormSuccess from "../MovieForm/FormSuccess";
 import EditSuccess from "../Details/EditSuccess";
+import Genre from "../Details/Genre";
 
 function App() {
   return (
@@ -40,6 +41,10 @@ function App() {
 
         <Route path="/details/:id/edit/success" exact>
           <EditSuccess />
+        </Route>
+
+        <Route path="/details/:id/genre" exact>
+          <Genre />
         </Route>
 
          {/* Form page */}
