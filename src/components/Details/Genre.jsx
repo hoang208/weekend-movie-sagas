@@ -115,13 +115,11 @@ export default function Genre() {
 
   return (
     <Box
-      component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}
-      noValidate
-      autoComplete="off"
     >
+             <form onSubmit={handleSubmit}>
       <Container maxWidth="sm" sx={{ p: 3 }}>
         <Typography sx={{ m: 2 }} variant="h4" align="center" component="div">
           Edit Genre
@@ -145,7 +143,7 @@ export default function Genre() {
           size="large"
           color="success"
           sx={{ m: 2 }}
-          onClick={handleSubmit}
+
         >
           Add
         </Button>
@@ -160,6 +158,7 @@ export default function Genre() {
           Cancel
         </Button>
       </Container>
+      </form>
     </Box>
   );
 }
