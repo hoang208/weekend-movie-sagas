@@ -32,7 +32,7 @@ export default function Details() {
 
  // click listener on back to list button that sends to home
  const handleBackToList = () => {
-    history.push(`/`)
+    history.push(`/movies`)
 }
 
 
