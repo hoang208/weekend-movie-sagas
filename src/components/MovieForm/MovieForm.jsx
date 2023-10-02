@@ -119,12 +119,9 @@ export default function MovieForm() {
 
   return (
     <Box
-      component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}
-      noValidate
-      autoComplete="off"
     >
         <form onSubmit={handleSubmit}>
       <Container maxWidth="sm" sx={{ p: 3 }}>
