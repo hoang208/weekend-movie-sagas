@@ -3,6 +3,7 @@ import "./App.css";
 import MovieList from "../MovieList/MovieList";
 import Details from "../Details/Details";
 import Header from "../Header/Header";
+import Home from "../Home/Home";
 
 function App() {
   return (
@@ -13,7 +14,13 @@ function App() {
           <Header />
         </Route>
 
+
         <Route path="/" exact>
+          <Home />
+        </Route>
+
+        {/* Movie List Page */}
+        <Route path="/movies" exact>
           <MovieList />
         </Route>
 

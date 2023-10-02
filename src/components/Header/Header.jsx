@@ -5,17 +5,21 @@ import { Button, Stack, Toolbar } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Header() {
-  const history=useHistory();
+  const history = useHistory();
+
+  //click listener to direct to home
+  const handleHome = () => {
+    history.push("/");
+  };
 
   //click listener to direct to movie list
   const handleMovieList = () => {
-    history.push('/')
-    console.log('clicked')
+    history.push("/movies");
   };
 
-   //click listener to direct to movie form
+  //click listener to direct to movie form
   const handleAdd = () => {
-    history.push("/details");
+    history.push("/form");
   };
 
   return (
@@ -32,6 +36,9 @@ export default function Header() {
             The Movies Saga!
           </Typography>
           <Stack direction="row" spacing={2}>
+            <Button onClick={handleHome} color="inherit">
+              Home
+            </Button>
             <Button onClick={handleMovieList} color="inherit">
               Movie List
             </Button>
