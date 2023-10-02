@@ -1,17 +1,24 @@
+import { ImageListItem, ImageListItemBar } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function MovieItem (props) {
-    const history=useHistory();
+export default function MovieItem(props) {
+  const history = useHistory();
 
-    // click listener on image that sends to details/id
-    const imageClicked = () => {
-        history.push(`/details/${props.id}`)
-    }
+  // click listener on image that sends to details/id
+  const imageClicked = () => {
+    history.push(`/details/${props.id}`);
+  };
 
-    return (
-        <div key={props.id}>
-            <h3>{props.title}</h3>
-            <img src={props.poster} alt={props.title} onClick={imageClicked}/>
-        </div>
-    );
+  return (
+    <ImageListItem>
+      <img
+        srcSet={`${props.poster}?w=248&fit=crop&auto=format&dpr=2 2x`}
+        src={`${props.poster}?w=248&fit=crop&auto=format`}
+        alt={props.title}
+        loading="lazy"
+        onClick={imageClicked}
+      />
+      <ImageListItemBar title={props.title} />
+    </ImageListItem>
+  );
 }
