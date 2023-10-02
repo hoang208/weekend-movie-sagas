@@ -24,6 +24,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_DETAILS', getTitle);
     yield takeEvery('FETCH_DETAILS', getGenres);
     yield takeEvery('FETCH_DETAILS', getPoster);
+    yield takeEvery('ADD_MOVIE', postMovie)
 }
 
 function* fetchAllMovies() {
@@ -79,6 +80,15 @@ function* getDescription(action) {
       console.log("error fetching images", error);
     }
   }
+
+  function* postMovie(action) {
+    try {
+        yield axios.post('/api/movie', action.payload);
+        yield put({ type: 'FETCH_MOVIES' });
+    } catch (error) {
+        console.log('error posting a movie', error);
+    }    
+}
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
