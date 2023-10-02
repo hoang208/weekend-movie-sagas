@@ -4,6 +4,8 @@ import MovieList from "../MovieList/MovieList";
 import Details from "../Details/Details";
 import Header from "../Header/Header";
 import Home from "../Home/Home";
+import MovieForm from "../MovieForm/MovieForm";
+import Success from "../MovieForm/Success";
 
 function App() {
   return (
@@ -28,6 +30,16 @@ function App() {
         <Route path="/details/:id">
           <Details />
         </Route>
+
+         {/* Form page */}
+         <Route path="/form" exact>
+          <MovieForm />
+        </Route>
+
+        <Route path="/form/success" exact>
+          <Success />
+        </Route>
+
       </Router>
     </div>
   );
