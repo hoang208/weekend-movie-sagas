@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 import { Card, CardActions, CardContent, Typography } from "@mui/material";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function Success() {
+export default function EditSuccess() {
   const history = useHistory();
 
   //click listener to direct to movie list
@@ -43,7 +43,7 @@ export default function Success() {
                 align="center"
                 style={{ wordWrap: "break-word" }}
               >
-                You added a new movie to the collection. 
+                You updated the movie in the collection. 
               </Typography>
               <CardActions style={{ justifyContent: "center" }}>
                 <Button
@@ -61,7 +61,7 @@ export default function Success() {
                   color="success"
                   onClick={handleAdd}
                 >
-                  Add another Movie
+                  Add A Movie
                 </Button>
               </CardActions>
             </CardContent>
