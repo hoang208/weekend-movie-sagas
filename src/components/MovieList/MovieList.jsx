@@ -14,7 +14,6 @@ function MovieList() {
 
   return (
     <main>
-      <h1>MovieList</h1>
       <ImageList cols={4} gap={20}>
         {movies.map((movie) => (
           <MovieItem
