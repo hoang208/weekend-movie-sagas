@@ -64,7 +64,7 @@ export default function Details() {
           <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
             <Stack direction="row" spacing={1}>
               {genres.map((genre) => (
-                <Chip label={genre} variant="outlined" />
+                <Chip key={genre} label={genre} variant="outlined" />
               ))}
             </Stack>
             <CardActions>
