@@ -29,8 +29,8 @@ export default function Edit() {
 
   //Data to send
   let [movieToUpdate, setMovieToUpdate] = useState({
-    title: "",
-    description: "",
+    title: title,
+    description: description,
     id: params.id,
   });
 
@@ -59,13 +59,11 @@ export default function Edit() {
 
   return (
     <Box
-      component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: "25ch" },
       }}
-      noValidate
-      autoComplete="off"
     >
+        <form onSubmit={handleSubmit}>
       <Container maxWidth="sm" sx={{ p: 3 }}>
         <Typography sx={{ m: 2 }} variant="h4" align="center" component="div">
           Edit movie
@@ -100,7 +98,6 @@ export default function Edit() {
           size="large"
           color="success"
           sx={{ m: 2 }}
-          onClick={handleSubmit}
         >
           Update
         </Button>
@@ -115,6 +112,7 @@ export default function Edit() {
           Cancel
         </Button>
       </Container>
+      </form>
     </Box>
   );
 }
