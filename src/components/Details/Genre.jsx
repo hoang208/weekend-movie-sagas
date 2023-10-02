@@ -2,7 +2,7 @@ import {
   Box,
   Button,
   Container,
-  Grid,
+  MenuItem,
   TextField,
   Typography,
 } from "@mui/material";
@@ -13,14 +13,12 @@ import {
   useParams,
 } from "react-router-dom/cjs/react-router-dom.min";
 
-export default function Edit() {
+export default function Genre() {
   const dispatch = useDispatch();
   const params = useParams();
   const history = useHistory();
 
-  //Movie details
-  const description = useSelector((store) => store.description);
-  const title = useSelector((store) => store.title);
+  const movieGenres = useSelector((store) => store.genres);
 
   //On load, get movide details call to database
   useEffect(() => {
@@ -29,24 +27,82 @@ export default function Edit() {
 
   //Data to send
   let [movieToUpdate, setMovieToUpdate] = useState({
-    title: "",
-    description: "",
+    genre_id: 1,
     id: params.id,
   });
 
   //Event listeners on inputs
-  const handleTitleChange = (event) => {
-    setMovieToUpdate({ ...movieToUpdate, title: event.target.value });
+  const handleGenreChange = (event) => {
+    setMovieToUpdate({ ...movieToUpdate, genre_id: event.target.value });
   };
-  const handleDescriptionChange = (event) => {
-    setMovieToUpdate({ ...movieToUpdate, description: event.target.value });
-  };
+
+  const genres = [
+    {
+      name: "Adventure",
+      value: 1,
+    },
+    {
+      name: "Animated",
+      value: 2,
+    },
+    {
+      name: "Biographical",
+      value: 3,
+    },
+    {
+      name: "Comedy",
+      value: 4,
+    },
+    {
+      name: "Disaster",
+      value: 5,
+    },
+    {
+      name: "Drama",
+      value: 6,
+    },
+    {
+      name: "Epic",
+      value: 7,
+    },
+    {
+      name: "Fantasy",
+      value: 8,
+    },
+    {
+      name: "Musical",
+      value: 9,
+    },
+    {
+      name: "Romantic",
+      value: 10,
+    },
+    {
+      name: "Science Fiction",
+      value: 11,
+    },
+    {
+      name: "Space-Opera",
+      value: 12,
+    },
+    {
+      name: "Superhero",
+      value: 13,
+    },
+  ];
+
+  //Filtered list to avoid duplicate genres
+  const genreFiltered = genres.filter((el) => {
+    return movieGenres.every((f) => {
+      return f !== el.name;
+    });
+  });
 
   //Submit form
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch({
-      type: "UPDATE_MOVIE",
+      type: "ADD_GENRE",
       payload: movieToUpdate,
     });
     history.push(`/details/${params.id}/edit/success`);
@@ -68,32 +124,21 @@ export default function Edit() {
     >
       <Container maxWidth="sm" sx={{ p: 3 }}>
         <Typography sx={{ m: 2 }} variant="h4" align="center" component="div">
-          Edit movie
+          Edit Genre
         </Typography>
-        <Grid container spacing={2} sx={{ border: 1, borderRadius: "16px" }}>
-          <Grid container item xs={6} direction="column">
-            <TextField
-              required
-              id="outlined-required"
-              label="Movie Title"
-              variant="filled"
-              defaultValue={title}
-              onChange={handleTitleChange}
-            />
-          </Grid>
-          <Grid container item xs={6} direction="column">
-            <TextField
-              required
-              id="description"
-              label="Movie Description"
-              multiline
-              rows={4}
-              variant="filled"
-              defaultValue={description}
-              onChange={handleDescriptionChange}
-            />
-          </Grid>
-        </Grid>
+        <TextField
+          id="genre-select"
+          select
+          label="Genre"
+          defaultValue="1"
+          onChange={handleGenreChange}
+        >
+          {genreFiltered.map((genre) => (
+            <MenuItem key={genre.value} value={genre.value}>
+              {genre.name}
+            </MenuItem>
+          ))}
+        </TextField>
         <Button
           type="submit"
           variant="outlined"
@@ -102,7 +147,7 @@ export default function Edit() {
           sx={{ m: 2 }}
           onClick={handleSubmit}
         >
-          Update
+          Add
         </Button>
         <Button
           type="submit"
