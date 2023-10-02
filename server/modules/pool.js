@@ -1,5 +1,6 @@
 const pg = require('pg');
 let pool;
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
 // When our app is deployed to the internet 
 // we'll use the DATABASE_URL environment variable
@@ -19,9 +20,14 @@ if (process.env.DATABASE_URL) {
 // also running on our computer (localhost)
 else {
     pool = new pg.Pool({
-        host: 'localhost',
+        host: PGHOST,
         port: 5432,
-        database: 'saga_movies_weekend', 
+        database: PGDATABASE,
+        user: PGUSER,
+        password: PGPASSWORD,
+        ssl: {
+          rejectUnauthorized: false,
+        },
     });
 }
 
