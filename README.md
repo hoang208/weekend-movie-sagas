@@ -4,7 +4,7 @@
 
 _Duration: 12 hour Sprint_
 
-Over the course of a weekend, the goal was to create a functional full-stack web based application. The web based application allow users create a movie collection.
+Over the course of a weekend, the goal was to create a functional full-stack web based application. The web based application allow users to create a movie collection.
 
 
 ## Screen Shots
@@ -26,7 +26,7 @@ In order to better understand where each path should lead to, I created a flow c
 - [React.js](https://react.dev/)
 - [Redux.js](https://redux.js.org)
 - [Redux-Saga.js](https://redux-saga.js.org/)
-- [Express] (https://expressjs.com/)
+- [Express.js](https://expressjs.com/)
 - Body-Parser
 - 'PG'
 - Database Manager
