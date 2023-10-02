@@ -12,7 +12,10 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useHistory,
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Details() {
   const dispatch = useDispatch();
@@ -30,16 +33,20 @@ export default function Details() {
     dispatch({ type: "FETCH_DETAILS", payload: params.id });
   }, []);
 
- // click listener on back to list button that sends to home
- const handleBackToList = () => {
-    history.push(`/movies`)
-}
+  // click listener on back to list button that sends to home
+  const handleBackToList = () => {
+    history.push(`/movies`);
+  };
 
- // click listener on edit button to send to edit page
- const handleEdit = () => {
-    history.push(`/details/${params.id}/edit`)
-}
+  // click listener on edit button to send to edit page
+  const handleEdit = () => {
+    history.push(`/details/${params.id}/edit`);
+  };
 
+  // click listener on edit button to send to edit genre page
+  const handleGenre = () => {
+    history.push(`/details/${params.id}/genre`);
+  };
 
   return (
     <Box
@@ -49,37 +56,56 @@ export default function Details() {
       textAlign="left"
       minHeight="100vh"
     >
-<Container maxWidth="lg">
-      <Card sx={{ display: "flex" }}>
-        <CardMedia
-          component="img"
-          alt={title}
-          image={poster}
-          sx={{ width: 151 }}
-        />
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography gutterBottom variant="h5" component="div">
-              {title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {description}
-            </Typography>
-          </CardContent>
-          <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-            <Stack direction="row" spacing={1}>
-              {genres.map((genre) => (
-                <Chip key={genre} label={genre} variant="outlined" />
-              ))}
-            </Stack>
-            <CardActions>
-              <Button size="small" onClick={handleBackToList}>Back to List</Button>
-              <Button size="small" onClick={handleEdit}>Edit</Button>
-            </CardActions>
+      <Container maxWidth="lg">
+        <Card sx={{ display: "flex" }}>
+          <CardMedia
+            component="img"
+            alt={title}
+            image={poster}
+            sx={{ width: 151 }}
+          />
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardContent sx={{ flex: "1 0 auto" }}>
+              <Typography gutterBottom variant="h5" component="div">
+                {title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {description}
+              </Typography>
+            </CardContent>
+            <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
+              <Stack direction="row" spacing={1}>
+                {genres.map((genre) => (
+                  <Chip
+                    key={genre}
+                    label={genre}
+                    variant="outlined"
+                    value={genre}
+                    onDelete={() => {
+                        dispatch({
+                            type: "DELETE_GENRE",
+                            payload: { id: params.id, genre: genre },
+                          })
+                          dispatch({ type: "FETCH_DETAILS", payload: params.id })
+                    }}
+                  />
+                ))}
+              </Stack>
+              <CardActions>
+                <Button size="small" onClick={handleBackToList}>
+                  Back to List
+                </Button>
+                <Button size="small" onClick={handleEdit}>
+                  Edit Title/Description
+                </Button>
+                <Button size="small" onClick={handleGenre}>
+                  Add Genre
+                </Button>
+              </CardActions>
+            </Box>
           </Box>
-        </Box>
-      </Card>
-    </Container>
+        </Card>
+      </Container>
     </Box>
   );
 }

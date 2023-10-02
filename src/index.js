@@ -26,6 +26,8 @@ function* rootSaga() {
   yield takeEvery("FETCH_DETAILS", getPoster);
   yield takeEvery("ADD_MOVIE", postMovie);
   yield takeEvery("UPDATE_MOVIE", updateMovie);
+  yield takeEvery("ADD_GENRE", addGenre);
+  yield takeEvery("DELETE_GENRE", deleteGenre)
 }
 
 function* fetchAllMovies() {
@@ -98,6 +100,25 @@ function* updateMovie(action) {
     yield axios.put(`/api/movie/${action.payload.id}`, action.payload);
   } catch (error) {
     console.log("error updating movie", error);
+  }
+}
+
+//POST GENRE
+function* addGenre(action) {
+  try {
+    yield axios.post(`/api/genre/${action.payload.id}`, action.payload);
+  } catch (error) {
+    console.log("error updating movie", error);
+  }
+}
+
+//DELETE GENRE
+function* deleteGenre(action) {
+  try {
+    const deleteGenre = yield axios.delete(`/api/genre/${action.payload.id}`, {data: {genre: action.payload.genre}});
+    console.log(deleteGenre)
+  } catch (error) {
+    console.log("error DELETING images", error);
   }
 }
 
