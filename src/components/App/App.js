@@ -5,7 +5,10 @@ import Details from "../Details/Details";
 import Header from "../Header/Header";
 import Home from "../Home/Home";
 import MovieForm from "../MovieForm/MovieForm";
-import Success from "../MovieForm/Success";
+import Success from "../MovieForm/FormSuccess";
+import Edit from "../Details/Edit";
+import FormSuccess from "../MovieForm/FormSuccess";
+import EditSuccess from "../Details/EditSuccess";
 
 function App() {
   return (
@@ -27,8 +30,16 @@ function App() {
         </Route>
 
         {/* Details page */}
-        <Route path="/details/:id">
+        <Route path="/details/:id" exact>
           <Details />
+        </Route>
+
+        <Route path="/details/:id/edit" exact>
+          <Edit />
+        </Route>
+
+        <Route path="/details/:id/edit/success" exact>
+          <EditSuccess />
         </Route>
 
          {/* Form page */}
@@ -37,7 +48,7 @@ function App() {
         </Route>
 
         <Route path="/form/success" exact>
-          <Success />
+          <FormSuccess />
         </Route>
 
       </Router>

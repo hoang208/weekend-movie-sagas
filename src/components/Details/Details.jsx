@@ -35,6 +35,11 @@ export default function Details() {
     history.push(`/movies`)
 }
 
+ // click listener on edit button to send to edit page
+ const handleEdit = () => {
+    history.push(`/details/${params.id}/edit`)
+}
+
 
   return (
     <Box
@@ -69,7 +74,7 @@ export default function Details() {
             </Stack>
             <CardActions>
               <Button size="small" onClick={handleBackToList}>Back to List</Button>
-              {/* <Button size="small">Edit</Button> */}
+              <Button size="small" onClick={handleEdit}>Edit</Button>
             </CardActions>
           </Box>
         </Box>
