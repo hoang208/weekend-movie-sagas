@@ -22,6 +22,11 @@ export default function Header() {
     history.push("/form");
   };
 
+   //click listener to direct to stats
+   const handleStats = () => {
+    history.push("/stats");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" >
@@ -44,6 +49,9 @@ export default function Header() {
             </Button>
             <Button onClick={handleAdd} color="inherit">
               Add a Movie
+            </Button>
+            <Button onClick={handleStats} color="inherit">
+              Stats
             </Button>
           </Stack>
         </Toolbar>

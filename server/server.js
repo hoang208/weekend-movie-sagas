@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const movieRouter = require('./routes/movie.router.js')
 const genreRouter = require('./routes/genre.router.js')
+const countRouter = require('./routes/count.router.js')
 const port = process.env.PORT || 5000;
 require("dotenv").config();
 
@@ -13,6 +14,7 @@ app.use(express.static('build'));
 /** ---------- ROUTES ---------- **/
 app.use('/api/movie', movieRouter);
 app.use('/api/genre', genreRouter)
+app.use('/api/count', countRouter)
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {

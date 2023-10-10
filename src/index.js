@@ -28,6 +28,7 @@ function* rootSaga() {
   yield takeEvery("UPDATE_MOVIE", updateMovie);
   yield takeEvery("ADD_GENRE", addGenre);
   yield takeEvery("DELETE_GENRE", deleteGenre)
+  yield takeEvery("FETCH_COUNT", getCount)
 }
 
 function* fetchAllMovies() {
@@ -84,6 +85,17 @@ function* getPoster(action) {
   }
 }
 
+//Get movie genres count
+function* getCount() {
+  try {
+    const count = yield axios.get(`/api/count`);
+    console.log('count',count.data)
+    yield put({ type: "SET_COUNT", payload: count.data});
+  } catch (error) {
+    console.log("error getting poster", error);
+  }
+}
+
 //POST MOVIE
 function* postMovie(action) {
   try {
@@ -129,6 +141,15 @@ const sagaMiddleware = createSagaMiddleware();
 const movies = (state = [], action) => {
   switch (action.type) {
     case "SET_MOVIES":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const count = (state = [], action) => {
+  switch (action.type) {
+    case "SET_COUNT":
       return action.payload;
     default:
       return state;
@@ -183,6 +204,7 @@ const storeInstance = createStore(
     title,
     genres,
     poster,
+    count
   }),
   // Add sagaMiddleware to our store
   applyMiddleware(sagaMiddleware, logger)
