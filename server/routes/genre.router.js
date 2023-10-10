@@ -24,6 +24,8 @@ router.get("/:id", (req, res) => {
     });
 });
 
+
+
 router.post("/:id", (req, res) => {
   let movie_id = req.params.id;
   let genre_id = req.body.genre_id;

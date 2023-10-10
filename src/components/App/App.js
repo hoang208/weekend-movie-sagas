@@ -10,6 +10,7 @@ import Edit from "../Details/Edit";
 import FormSuccess from "../MovieForm/FormSuccess";
 import EditSuccess from "../Details/EditSuccess";
 import Genre from "../Details/Genre";
+import Stats from "../Stats/Stats";
 
 function App() {
   return (
@@ -54,6 +55,10 @@ function App() {
 
         <Route path="/form/success" exact>
           <FormSuccess />
+        </Route>
+
+        <Route path="/stats" exact>
+          <Stats />
         </Route>
 
       </Router>
