@@ -45,6 +45,7 @@ This web application is meant to create an interactive feedback form where users
  3. By clicking on the movie poster, users can see more details about the movie such as a description and the genres.
  4. Users can choose to edit the title or description, or they can choose to add or delete genres if they feel if the genres do not match the movie.
  5. By navigating to the add a movie page, users can fill out a form to add another movie to the collection.
+ 6. By navigating to the stats page, users can see how many movies there are in each genre.
 
 ## Acknowledgement
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality.
