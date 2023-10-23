@@ -1,4 +1,4 @@
-# Redux Feedback Form:
+# Redux-Saga Movie Collection:
 
 ## Description
 
