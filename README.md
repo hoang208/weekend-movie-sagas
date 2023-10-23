@@ -39,7 +39,7 @@ In order to better understand where each path should lead to, I created a flow c
 5. Navigate to http://localhost3000/
 
 ## Usage
-This web application is meant to create an interactive feedback form where users can submit their feedback, or go back to any previous pages:
+This web application is meant to create an interactive movie collection where users can track and add any movies they viewed:
  1. The user can look at all the movies in their collection by navigating to movie collections.
  2. On the movie collection page, users can use the search bar to narrow down to a specific movie if needed.
  3. By clicking on the movie poster, users can see more details about the movie such as a description and the genres.

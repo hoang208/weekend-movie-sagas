@@ -12,7 +12,6 @@ import { Box, Container, Typography } from "@mui/material";
 ChartJS.register(
   CategoryScale,
   LinearScale,
-
   BarElement
 );
 
